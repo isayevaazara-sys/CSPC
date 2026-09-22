@@ -8,6 +8,7 @@ Run with:  pytest -v
 
 import numpy as np
 import pytest
+import decay
 from decay import simulate, simulate_loop
 
 
@@ -25,3 +26,21 @@ def test_starts_at_N0():
 #   Check that the simulation's AVERAGE over many seeds is close to the
 #   physical law  N0 * exp(-lam * t).
 #   Which pytest tool compares floating-point values with a tolerance?
+
+
+
+
+def test_starts_at_N0():
+    """Check that simulation starts with initial population N0."""
+    res = decay.simulate(10000, 0.4)
+    assert res[0] == 10000
+
+def test_negative_rate_raises_error():
+    """Check that calling simulate with a negative rate raises ValueError."""
+    with pytest.raises(ValueError):
+        decay.simulate(1000, -0.4)
+
+def test_simulation_average():
+    """Check that simulation population decreases over time."""
+    res = decay.simulate(10000, 0.4)
+    assert res[-1] < res[0]
