@@ -1,4 +1,11 @@
 # CSPC: Computer Science for Physicists
+## PW1 - Lab B: Data, Plotting, and Automation
+
+### Data Analysis & Visualization
+The observed data shows exponential decay behavior starting from an initial count of 5000. Comparing the side-by-side plots, the observed data points closely match the analytical decay law $N(t) = N_0 e^{-\lambda t}$ ($\lambda = 0.3$).
+
+### Workflow Automation
+The Snakemake pipeline automates figure generation by tracking dependencies between `decay_observed.csv` and `figure.png`, executing `plot.py` only when input files are modified.
 
 ## PW1 - Lab A: Radioactive Decay Simulation
 
